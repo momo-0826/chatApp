@@ -29,35 +29,35 @@ console.log(routerTest);
       <img :src="routeValue.params.userIcon" />
     </div>
     <div class="user-info-list">
-      <div class="user-info-list-item">
-        <div class="user-info-list-item-title">
+      <div class="user-info-list-item grid">
+        <div class="col-4">
           <p>Name</p>
         </div>
-        <div class="user-info-list-item-content">
+        <div class="col-8">
           <p>{{ routeValue.params.userName }}</p>
         </div>
       </div>
-      <div class="user-info-list-item">
-        <div class="user-info-list-item-title">
+      <div class="user-info-list-item grid">
+        <div class="col-4">
           <p>gender</p>
         </div>
-        <div class="user-info-list-item-content">
+        <div class="col-8">
           <p>{{ routeValue.params.userGender }}</p>
         </div>
       </div>
-      <div class="user-info-list-item">
-        <div class="user-info-list-item-title">
+      <div class="user-info-list-item grid">
+        <div class="col-4">
           <p>age</p>
         </div>
-        <div class="user-info-list-item-content">
+        <div class="col-8">
           <p>{{ routeValue.params.userAge }}</p>
         </div>
       </div>
-      <div class="user-info-list-item">
-        <div class="user-info-list-item-title">
+      <div class="user-info-list-item grid">
+        <div class="col-4">
           <p>Country</p>
         </div>
-        <div class="user-info-list-item-content">
+        <div class="col-8">
           <p>{{ routeValue.params.userCountry }}</p>
         </div>
       </div>
@@ -70,6 +70,7 @@ console.log(routerTest);
 .user-info {
   width: 95%;
   margin: auto;
+  text-align: center;
   .user-info-img {
     width: 200px;
     margin: 1rem auto;
@@ -78,14 +79,8 @@ console.log(routerTest);
   .user-info-list {
     margin-bottom: 1rem;
     .user-info-list-item {
-      display: flex;
+      text-align: left;
       border-bottom: 1px solid #e6e8ea;
-      .user-info-list-item-title {
-        margin-left: 1rem;
-      }
-      .user-info-list-item-content {
-        margin-left: 1rem;
-      }
     }
   }
 }

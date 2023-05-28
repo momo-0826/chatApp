@@ -12,7 +12,8 @@ import { RouterLink, RouterView } from 'vue-router'
   <RouterView />
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@import 'primeflex/primeflex.scss';
 
 nav {
   width: 100%;
