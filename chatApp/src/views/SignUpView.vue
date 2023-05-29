@@ -1,6 +1,5 @@
 <template>
-  <h2>新規登録</h2>
-  <div>
+  <div class="content">
     <Card style="width: 25rem">
       <template #content>
         <form @submit.prevent="">
@@ -134,6 +133,9 @@ const isCorrectInput = (): boolean => {
 </script>
 
 <style lang="scss" scoped>
+.content {
+  text-align: center;
+}
 .form-group {
   margin: 1rem 0;
   label {
