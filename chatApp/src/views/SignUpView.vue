@@ -55,7 +55,7 @@
                 <InputText v-model="rePassword" id="password2" type="text" />
               </span>
               <div v-if="isPasswordEmpty === true">
-                <Message severity="error">reenter Password is required</Message>
+                <Message severity="error">renter Password is required</Message>
               </div>
               <div v-if="isPasswordIncoorect === true">
                 <Message severity="error"
@@ -75,29 +75,25 @@
 import { ref } from "vue";
 import Button from "primevue/button";
 import Card from "primevue/card";
+import Message from 'primevue/message';
 import InputText from "primevue/inputtext";
-import UserInterface from "../repository/userInterface";
 import UserUtils from "@/utils/userUtils";
 import CommonUtils from "@/utils/commonUtils";
+import type UserInterface from "../repository/userInterface";
 
 // password再入力用
 const rePassword = ref<string>("");
 
 const userInfo = ref<UserInterface>({} as UserInterface);
 
-const errorList = ref<string[]>([]);
-
 const isNameEmpty = ref(false);
 const isEmailEmpty = ref(false);
 const isPasswordEmpty = ref(false);
 const isPasswordIncoorect = ref(false);
-const isError = ref(false);
-
 // フォーム送信時の処理
 const handleSubmit = async () => {
   if (!isCorrectInput()) return;
-  // userInfo.value.id = 3;
-  console.log(userInfo.value);
+
   await UserUtils.createUser(userInfo.value);
 };
 
@@ -123,7 +119,8 @@ const isCorrectInput = (): boolean => {
     isPasswordEmpty.value = true;
     res = false;
   }
-  if (userInfo.value.password !== rePassword.value) {
+
+  if (CommonUtils.isNullorUndefined(rePassword.value) || userInfo.value.password !== rePassword.value) {
     isPasswordIncoorect.value = true;
     res = false;
   }
@@ -145,7 +142,7 @@ const isCorrectInput = (): boolean => {
   }
 }
 
-::v-deep(.p-card) {
+:deep(.p-card) {
   margin: auto;
   background-color: #fff;
   .p-card-content {
@@ -153,7 +150,7 @@ const isCorrectInput = (): boolean => {
   }
 }
 
-::v-deep(.p-button) {
+:deep(.p-button) {
   color: #fff;
   background: #3b82f6;
   border: #3b82f6;
@@ -165,8 +162,12 @@ const isCorrectInput = (): boolean => {
   }
 }
 
-::v-deep(.p-inputtext) {
+:deep(.p-inputtext) {
   background-color: #fff;
   color: #000;
+}
+
+:deep(.p-message .p-message-wrapper) {
+  padding: 0.5rem 1rem;
 }
 </style>

@@ -13,9 +13,11 @@ export default class UserUtils {
 
   // ユーザー追加処理
   public static async createUser(userInfo: UserInterface) {
+    const param = "userName=" + userInfo.userName + "&password=" + userInfo.password + "&email=" + userInfo.email;
+    console.log(param)
     const res = axios.post(
       "http://localhost:8081/api/chatApp/UserInfo/user",
-      userInfo
+      param
     );
     console.log((await res).data);
   }
